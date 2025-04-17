@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
+from database import get_db
 
 router = APIRouter()
 
@@ -8,8 +9,8 @@ async def create_iplogger():
     return {"message": "IP logger created successfully"}
 
 
-@router.get("/get_iplogger")
-async def get_iplogger():
+@router.get("/get_badtrips")
+async def get_badtrips():
     return {"message": "IP logger retrieved successfully"}
 
 
