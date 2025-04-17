@@ -13,16 +13,16 @@ class IPLogger(Base):
 
     id = Column(String, primary_key=True, index=True)
     user_id = Column(String, ForeignKey("users.id"), nullable=False)
-    template = Column(String, nullable=False)
+    template = Column(JSON, nullable=False)
     title_preview = Column(String, nullable=False)
     description_preview = Column(String, nullable=False)
-    image_preview = Column(String, nullable=False)
+    image_preview = Column(JSON, nullable=False)
     device_data = Column(Boolean, nullable=False)
     location_data = Column(Boolean, nullable=False)
     cam_data = Column(Boolean, nullable=False)
     created_at = Column(Date, nullable=False)
 
-    user = relationship("User", back_populates="iploggers")
+    user = relationship("User", backref="iploggers")
 
 
 class BadTrip(Base):
@@ -38,5 +38,5 @@ class BadTrip(Base):
     cam_image = Column(String, nullable=False)
     created_at = Column(Date, nullable=False)
 
-    iplogger = relationship("IPLogger", back_populates="badtrips")
-    user = relationship("User", back_populates="iploggers")
+    iplogger = relationship("IPLogger", backref="iploggers")
+    user = relationship("User", backref="users")
