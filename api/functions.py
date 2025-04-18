@@ -3,7 +3,7 @@ import uuid
 from uuid_extensions import uuid7str
 
 def user_id_gen():
-    return str(uuid.uuid())
+    return str(uuid.uuid4())
 
 
 def iplogger_id_gen():
